@@ -1,0 +1,9 @@
+filebeat.inputs:
+  - type: log
+    enabled: true
+    paths:
+      - /opt/cowrie-docker/logs/cowrie.json
+    tags: ["cowrie"]
+
+output.logstash:
+  hosts: ["localhost:5044"]

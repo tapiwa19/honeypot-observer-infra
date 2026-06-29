@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  cowrie:
+    image: cowrie/cowrie:latest
+    container_name: cowrie-honeypot
+    restart: unless-stopped
+    ports:
+      - "0.0.0.0:22:2222"
+    volumes:
+      - ./logs:/cowrie/cowrie-git/var/log/cowrie
+      - ./config/userdb.txt:/cowrie/cowrie-git/etc/userdb.txt:ro
+      - ./config/keys:/cowrie/cowrie-git/etc/ssh_host_keys:ro
