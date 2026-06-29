@@ -1,0 +1,7 @@
+elasticsearch/
+snapshots/
+cowrie/
+*.log
+*.bak*
+__pycache__/
+*.pyc
