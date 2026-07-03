@@ -5,5 +5,13 @@ filebeat.inputs:
       - /opt/cowrie-docker/logs/cowrie.json
     tags: ["cowrie"]
 
+  - type: log
+    enabled: true
+    paths:
+      - /var/log/honeypot/http.jsonl
+    tags: ["http_honeypot"]
+    json.keys_under_root: true
+    json.add_error_key: true
+
 output.logstash:
   hosts: ["localhost:5044"]

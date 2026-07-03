@@ -1,0 +1,17 @@
+[Unit]
+Description=Honeypot Observer HTTP Honeypot
+After=network.target
+
+[Service]
+Type=simple
+User=honeypot
+WorkingDirectory=/opt/honeypot-http
+ExecStart=/home/honeypot/.local/bin/gunicorn --bind 0.0.0.0:8080 --workers 2 --access-logfile - honeypot:app
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+Environment=PYTHONPATH=/home/honeypot/.local/lib/python3.12/site-packages
+
+[Install]
+WantedBy=multi-user.target
