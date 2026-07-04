@@ -21,5 +21,13 @@ filebeat.inputs:
     json.keys_under_root: true
     json.add_error_key: true
 
+  - type: log
+    enabled: true
+    paths:
+      - /var/log/honeypot/telnet.jsonl
+    tags: ["telnet_honeypot"]
+    json.keys_under_root: true
+    json.add_error_key: true
+
 output.logstash:
   hosts: ["localhost:5044"]

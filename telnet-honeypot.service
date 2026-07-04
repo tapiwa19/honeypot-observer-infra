@@ -1,0 +1,18 @@
+[Unit]
+Description=Honeypot Observer - Telnet Honeypot
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/honeypot-http
+ExecStart=/usr/bin/python3 /opt/honeypot-http/telnet_honeypot.py
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+Environment=PYTHONUNBUFFERED=1
+Environment=PYTHONPATH=/home/honeypot/.local/lib/python3.12/site-packages
+
+[Install]
+WantedBy=multi-user.target
