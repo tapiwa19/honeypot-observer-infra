@@ -13,5 +13,13 @@ filebeat.inputs:
     json.keys_under_root: true
     json.add_error_key: true
 
+  - type: log
+    enabled: true
+    paths:
+      - /var/log/honeypot/ftp.jsonl
+    tags: ["ftp_honeypot"]
+    json.keys_under_root: true
+    json.add_error_key: true
+
 output.logstash:
   hosts: ["localhost:5044"]

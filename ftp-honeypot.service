@@ -1,0 +1,19 @@
+[Unit]
+Description=Honeypot Observer - FTP Honeypot
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/honeypot-http
+ExecStart=/usr/bin/python3 /opt/honeypot-http/ftp_honeypot.py
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+Environment=PYTHONUNBUFFERED=1
+Environment=PYTHONPATH=/home/honeypot/.local/lib/python3.12/site-packages
+
+[Install]
+WantedBy=multi-user.target
